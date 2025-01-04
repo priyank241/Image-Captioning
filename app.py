@@ -4,7 +4,7 @@ import pickle
 from PIL import Image
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import load_img,img_to_array
-import numpy as np
+import numpy as np  ## import Numpy library...
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from utils import generate_caption
 from io import BytesIO
