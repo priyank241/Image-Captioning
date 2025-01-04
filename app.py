@@ -1,25 +1,17 @@
-#  req libraries
-import streamlit as st
-import pickle
-from PIL import Image
-import tensorflow as tf
-from tensorflow.keras.preprocessing.image import load_img,img_to_array
 import numpy as np
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from utils import generate_caption
-from io import BytesIO
+import streamlit as st
+from PIL import Image
+from tensorflow.keras.preprocessing.image import load_img
+from utils import generate_caption,load_models
 
 
-model = tf.keras.models.load_model(r'artifacts\model.keras')
-fe = tf.keras.models.load_model(r'artifacts\fe.keras')
-max_length = 34
+
+model,fe,max_length,tokenizer=load_models()
 
 
-with open(r'artifacts\tokenizer.pkl', 'rb') as tokenizer_file:
-    tokenizer = pickle.load(tokenizer_file)
 # Set up the side menu
 st.sidebar.title("Menu")
-st.sidebar.write("Use the menu to navigate")
+st.sidebar.write("Use The Menu To Navigate")
 
 # Image uploader in the sidebar
 st.sidebar.title("Image Upload")

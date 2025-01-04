@@ -1,8 +1,8 @@
 import tensorflow as tf
-from tensorflow.keras.preprocessing.image import load_img,img_to_array
+from tensorflow.keras.preprocessing.image import img_to_array
 import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-
+import pickle
 
 
 def generate_caption(caption_model, tokenizer, feature_extractor, img, max_length):
@@ -42,3 +42,14 @@ def generate_caption(caption_model, tokenizer, feature_extractor, img, max_lengt
     caption = " ".join([tokenizer.index_word[idx] for idx in sequence 
                         if idx > 0 and idx not in [tokenizer.word_index['startseq'], tokenizer.word_index['endseq']]])
     return caption
+
+def load_models():
+    model = tf.keras.models.load_model(r'artifacts\model.keras')
+    fe = tf.keras.models.load_model(r'artifacts\fe.keras')
+    max_length = 34
+
+
+    with open(r'artifacts\tokenizer.pkl', 'rb') as tokenizer_file:
+        tokenizer = pickle.load(tokenizer_file)
+    
+    return model,fe,max_length,tokenizer
