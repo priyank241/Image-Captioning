@@ -1,3 +1,4 @@
+#  req libraries
 import streamlit as st
 import pickle
 from PIL import Image
@@ -7,6 +8,7 @@ import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from utils import generate_caption
 from io import BytesIO
+
 
 model = tf.keras.models.load_model(r'artifacts\model.keras')
 fe = tf.keras.models.load_model(r'artifacts\fe.keras')
